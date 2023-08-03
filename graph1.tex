@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,russian]{babel}
+
+\begin{document}
+\begin{tikzpicture}[
+    node distance = 2cm, % Расстояние между узлами
+    oval/.style={draw, ellipse}, % Стиль для овала
+    square/.style={draw, minimum size=2cm}, % Стиль для квадрата
+    arrow/.style={->, >=latex}, % Стиль для стрелок
+]
+
+% Узлы
+\node[square] (center) {На основании чего система примет решение что пакет не подходит?};
+\node[oval, below=of center] (dependencies) {\textcyrillic{Зависимости}};
+\node[oval, left=of dependencies] (version) {Версия системы};
+\node[oval, right=of dependencies] (architecture) {Архитектура процессора};
+\node[oval, below=of dependencies, xshift=+3cm, yshift=1cm] (security) {Ограничения безопасности};
+\node[oval, below left=of security, xshift=+0.4cm, yshift=+1cm] (conflicts) {Конфликты с другими пакетами};
+
+% Стрелки
+\draw[arrow] (center) -- (dependencies);
+\draw[arrow] (center) -- (version);
+\draw[arrow] (center) -- (architecture);
+\draw[arrow] (center) -- (security);
+\draw[arrow] (center) -- (conflicts);
+
+\end{tikzpicture}
+\end{document}
