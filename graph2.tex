@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,russian]{babel}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \coordinate (A) at (0,2);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (0,-2);
+    \coordinate (D) at (-2,0);
+    
+    \draw (A) -- (B) -- (C) -- (D) -- cycle;
+    
+    \node at (0,0) {Виды ПО};
+    
+    % Овалы с надписями
+    \node[ellipse,draw,align=center, yshift=+1cm] at (0,3) (testing) {Testing \\ (В процессе разработки)};
+    \node[ellipse,draw,align=center, xshift=+3cm] at (3,0) (backport) {Backport \\ (Поддержка старых систем)};
+    \node[ellipse,draw,align=center, yshift=-1cm] at (0,-3) (stable) {Stable \\ (Рекомендуется к установке)};
+    \node[ellipse,draw,align=center, xshift=-3cm] at (-3,0) (unstable) {Unstable \\ Самое новое \\ (Для разработчиков)};
+    
+    % Стрелки от углов ромба
+    \draw[->] (A) -- (testing);
+    \draw[->] (B) -- (backport);
+    \draw[->] (C) -- (stable);
+    \draw[->] (D) -- (unstable);
+\end{tikzpicture}
+
+\end{document}
